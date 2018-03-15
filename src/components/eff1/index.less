@@ -1,0 +1,99 @@
+     @import '../../common/less/util.less';
+     
+        .list-314{
+            padding: 10px 30px;
+            box-shadow: 0 0 10px 2px #ddd;
+            background-color: #fff;
+            position: relative;
+            z-index: 10;
+            .h-list(16.6%);
+            width: 1260px;
+            margin: 0 auto;
+            li{
+                position: relative;
+                height: 120px;
+                padding:30px 0;
+                cursor: pointer;
+                .outer,.top{
+                     text-align: left;
+                     position: relative;
+                     padding-top: 40px;
+                     p{
+                         line-height: 2.5;
+                         font-size: 18px;
+                     }
+                     img{
+                         position: absolute;
+                         left: 0;
+                         top: 0;
+                         display: inline-block;
+                     }
+                 }
+                 .outer{
+                     text-align: center;
+                     padding-top: 20px;
+                     img{
+                         position: relative;
+                     }
+                 }
+                .scale-wrap{
+                     padding:30px 20px 30px 40px;
+                     overflow: hidden;
+                     background-color: #fff;
+                     position: absolute;
+                     left: 0;
+                     top: 0;
+                     bottom: 0;
+                     right: 0;
+                     margin:auto;
+                     z-index: 1;
+                       width: 130px;
+                       height: 180px;
+                       transform: scale(.4);
+                       -ms-transform: scale(.4);
+                       opacity: 0;
+                        transition: all .4s cubic-bezier(.165,.84,.44,1);
+                     .bottom{
+                         p{
+                             color: #999;
+                             font-size: 14px;
+                         }
+                         a{
+                             margin-top: 30px;
+                             border-radius: 30px;
+                             font-size: 12px;
+                         }
+                     }
+                }
+                &:after{
+                    content: '';
+                    display: block;
+                    height: 70%;
+                    width: 1px;
+                    background-color: #ccc;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                    z-index: 2;
+                }
+                &:last-of-type:after{
+                    display: none;
+                }
+                &:hover{
+                    .outer{
+                        transform: translateY(-15px);
+                        transition: all .3s;
+                    }
+                   .scale-wrap{
+                       box-shadow: 0 0 87px rgba(0,0,0,.25);
+                       z-index: 3;
+                       transform: scale(1);
+                       padding:50px;
+                       opacity: 1;
+                       transition-delay: .2s;
+                   } 
+                }
+            }
+        }

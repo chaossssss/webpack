@@ -1,0 +1,76 @@
+@import '../../common/less/util.less';
+
+/**
+     * @header
+ */
+@themeColor:#003a8f;
+.g-container{
+    width: 1200px;
+    margin: 0 auto;
+}
+.header{
+    line-height: 80px;
+    .g-container{
+    }
+    .logo{
+        width: 174px;
+        float: left;
+        margin-right: -175px;
+        text-align: center;
+        img{
+            display: inline-block;
+        }
+    }
+    .nav-bar{
+        margin-left: 175px;
+        
+        .bar{
+            width: 182px;
+            float: right;
+            margin-left: -182px;
+            line-height: 1;
+            height: 60px;
+            padding-top: 20px;
+            p{
+                font-size: 14px;
+                color: #999;
+                margin-bottom: 5px;
+                padding-left: 26px;
+            }
+            span{
+                    display: inline-block;
+                    font-size: 20px;
+                    color: #333;
+                    font-weight: bold;
+                    margin-right: 5px;
+                    vertical-align: middle;
+                }
+                i{
+                    vertical-align: middle;
+                    font-size: 20px;
+                    display: inline-block;
+                }
+        }
+        .nav{
+            margin-right: 182px;
+            padding:8px 10% 0 20%;
+            .h-list(auto);
+            li{
+                text-align: center;
+                font-size: 15px;
+                padding: 0 25px;
+                a{
+                    color: #999;
+                }
+            }
+            a:hover{
+                color: @themeColor;
+            }
+            .on{
+                a{
+                   color: @themeColor; 
+                }
+            }
+        }
+    }
+}

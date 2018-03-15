@@ -1,0 +1,67 @@
+@charset "UTF-8";
+//must
+@import './bootstrap/mixins.less';
+@import './bootstrap/variables.less';
+@import './bootstrap/normalize.less';
+//usefull
+@import './bootstrap/buttons.less';
+@import './bootstrap/button-groups.less';
+@import './bootstrap/forms.less';
+@import './bootstrap/utilities.less';
+@import './bootstrap/carousel.less';
+@import './bootstrap/component-animations.less';
+
+/*
+ * globe
+ */
+
+body{
+    font-size: 14px;
+    font-family: "微软雅黑";
+}
+
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+img{
+    .img-responsive(block);
+    vertical-align: middle;
+    margin: 0 auto;
+}
+
+ul,p,li,dl,dd,dt,h1,h2,h3,h4,h5{
+    margin: 0;
+    padding: 0;
+}
+
+em,i{
+    font-style: normal;
+}
+
+
+*[data-tnl]{
+    opacity: 0;
+}
+
+@font-face {
+  font-family: 'iconfont';  /* project id 522125 */
+  src: url('//at.alicdn.com/t/font_522125_brrnwkz29p3f2yb9.eot');
+  src: url('//at.alicdn.com/t/font_522125_brrnwkz29p3f2yb9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_522125_brrnwkz29p3f2yb9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_522125_brrnwkz29p3f2yb9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_522125_brrnwkz29p3f2yb9.svg#iconfont') format('svg');
+}
+
+.ff{
+  font-family: 'iconfont';   
+}
+
+
+
+
+
+

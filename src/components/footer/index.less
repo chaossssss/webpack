@@ -1,0 +1,76 @@
+/**
+     * @footer
+ */
+@import '../../common/less/util.less';
+.footer{
+    background-color: #333;
+    padding: 50px 0;
+    .f-nav{
+        width: 1200px;
+        margin: 0 auto;
+        border-bottom: 1px solid #666;
+        .h-list(134px);
+        li{
+            a{
+                color: #fff;
+                line-height: 46px;
+                &:hover{
+                    color: red;
+                }
+            }
+        }
+    }
+    .g-container{
+        padding-top: 30px;
+        p{
+            color: #fff;
+            line-height: 1.8;
+        }
+        .copy-right{
+            color:#666;
+            font-size: 12px;
+            margin-top: 30px;
+        }
+    }
+}
+
+/**
+     * @right-bar
+ */
+
+.right-float-bar{
+    @border-color:#ccc;
+    @bg-color:#ea3300;
+    position: fixed;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    margin:auto;
+    height: 346px;
+    z-index: 2;
+    li{
+        padding:5px;
+        width: 38px;
+        height: 38px;
+        text-align: center;
+        border: 1px solid @border-color;
+        cursor: pointer;
+        background-color: #fff;
+        margin-top: 10px;
+        border-radius: 5px;
+        span{
+            display: inline-block;
+            font-size: 20px;
+            color: #555;
+        }
+        p{
+            color: #999;
+            font-size: 13px;
+        }
+        a{
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<%= htmlWebpackPlugin.options.title %>
+	</head>
+	<body data-rem='900'>
+		<%= process.env.mode === 'production' ? '@Html.Partial("head")':require('@/head/index.ejs')() %>
+		<div class="index-body">
+			<%= require('@/banner/index.ejs')() %>
+			<div class="section0">
+				<%=require('@/eff1/index.ejs')()%>
+			</div>
+			<div class="section1">
+				<%= require('@/list/index.ejs')() %>
+			</div>
+			<div class="section2">
+				<%= require('@/map/index.ejs')() %>
+			</div>
+		</div>
+		<%= require('@/form/index.ejs')() %>
+		<%= process.env.mode === 'production' ? '@Html.Partial("head")':require('@/footer/index.ejs')() %>
+	</body>
+	<script src="<%=require('file-loader?name=js/[name].js!./plugin/print.js')%>" type="text/javascript" charset="utf-8"></script>
+</html>
+

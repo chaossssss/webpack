@@ -1,0 +1,264 @@
+/**
+ *     public_fun
+ *     
+ */
+
+.borderBox(){
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+    }
+
+    .hover(@fontColor;@bgColor:@themeColor){
+        &:hover{
+            background-color: @bgColor;
+            color:@fontColor;
+        }
+    }
+    
+    //垂直居中
+    .verticalCenter(){
+        position: relative;
+        top:50%;
+        .transform(translateY,-50%);
+        
+    }
+    //左右居中
+    .horizontalCenter(){
+        position: relative;
+        left: 50%;
+        .transform(translateX,-50%);
+    }
+    
+    .transform(@action;@rest...){
+        transform: ~"@{action}(@{rest})";
+        -ms-transform: ~"@{action}(@{rest})";
+        -webkit-transform: ~"@{action}(@{rest})";
+        -moz-transform: ~"@{action}(@{rest})";
+        -o-transform: ~"@{action}(@{rest})";
+    }
+    
+    .transition(@property;@during;@fun;@delay){
+        transition:@arguments;
+        -ms-transition: @arguments;
+        -webkit-transition:@arguments;
+        -moz-transition: @arguments;
+        -o-transition:@arguments;
+    }
+    
+    .transition(@property;@during){
+        .transition(@property,@during,ease-in,0s);
+    }
+    
+    .opacity(@value:1) when (@value=<1)and(@value>=0){
+        opacity:@value;
+//      filter: alpha(opacity=(@value*100));
+    }
+
+    //@direction是圆角的方向,书写方法是左上角：-top-left,右上角：-top-right，左下角：-bottom-left，右下角-bottom-right
+     .dborderRadius (@direction;@r:0) {
+            border@{direction}-radius:@r;
+            -webkit-border@{direction}-radius:@r;
+            -moz-border@{direction}-radius:@r;
+            -ms-border@{direction}-radius:@r;
+            -o-border@{direction}-radius:@r;
+        
+      }
+      //不指定方向
+   .borderRadius(@r:0){
+       .dborderRadius(~"",@r);
+   }
+  
+    
+    //渐变字体+阴影，字体样式需要额外设置，支持添加字体阴影效果，例如
+    //          font-family: Segoe, Verdana, sans-serif; 
+    //          font-size: 100px; 
+    //          line-height: 100px;             
+    //          text-shadow: -3px 0 4px #006; 
+    //兼容性，只能支持webkit内核，其他浏览器非渐变 
+    //html结构<h2 data-content='VEGETABLE&FRUIT'><span>VEGETABLE&FRUIT</span></h2>
+    .gradientFont(@from,@to){
+        position: relative; 
+        span{
+            position: absolute; 
+            top: 0; 
+            z-index: 2; 
+            color: @from; 
+            -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0))); 
+        }
+        &:after{
+            content: attr(data-content); 
+            color: @to; 
+        }
+    }
+    
+   //arrow
+   .arrow(left,@width,@color,@style:solid){
+       border-color: transparent transparent transparent @color;
+   }
+   .arrow(right,@width,@color,@style:solid){
+       border-color: transparent @color transparent transparent ;
+   }
+   .arrow(top,@width,@color,@style:solid){
+       border-color: @color transparent transparent transparent ;
+   }
+   .arrow(bottom,@width,@color,@style:solid){
+       border-color: transparent transparent @color transparent ;
+   }
+   .arrow(@_,@width,@color,@style:solid){
+       width: 0;
+       height: 0;
+       border-style: @style;
+       border-width:@width;
+   }
+   
+   //一行多余文字显示省略号
+   .ellisis(){
+        text-overflow:ellipsis; 
+        white-space:nowrap; 
+        overflow:hidden;
+   }
+   
+ //水平列表
+   .h-list(@width;@mr:0){
+    .clearfix();
+        >li{
+            float: left;
+            margin-right: @mr;
+            width: @width;
+        }
+        >li:last-of-type{
+            margin-right: 0;
+        }
+    }
+    
+    .h-list-col(@width;@mr:0;@colum:2){
+        @n:~"@{colum}n";
+        .clearfix();
+        >li{
+            float: left;
+            margin-right: @mr;
+            width: @width;
+            margin-top: 20px;
+        }
+        >li:nth-of-type(@{n}){
+            margin-right: 0;
+        }
+    } 
+
+//左右结构
+    .left-right(@width:50%){
+        .clearfix();
+        >*{
+            .box-sizing(border-box);
+        }
+        >.left{
+           float: left; 
+           width: @width;
+        }
+        >.right{
+            float: right;
+            width: calc(~'100% - @{width}');
+            width: -webkit-calc(~'100% - @{width}');
+            width: -moz-calc(~'100% - @{width}');
+        }
+    }
+ //标题结构
+    .header-line(@inline:block){
+        color: @themeColor;
+        text-align: center;
+        font-size: 1.2em;
+        small when(@inline = block){
+            display: block;
+        }
+        small{
+            font-weight: normal;
+            margin-top: 2px;
+        }
+    }
+ //section块结构
+    .section(@m:0,@p:100px){
+        @rem:~"@{m} 0";
+        @rep:~"@{p} 0";
+        margin:@rem;
+        padding:@rep;
+    }
+    
+ //导航栏
+ .navbar(@item:1;@height;@color:#000){
+     .nav-list{
+         @iw:100/@item;
+         .h-list(~"@{iw}%");
+         >li{
+            &>a{
+                display:block;
+                line-height: @height;
+                text-align:center;
+                color: @color;
+                &:hover{
+                    color: @themeColor;
+                }
+            }
+             position: relative;
+            .sub-menu{
+                display: none;
+                position: absolute;
+                .transition(all,.3s);
+                box-shadow: 0px 0px 1px 0px #000000;
+                top: 50px;
+                left: 0px;
+                background-color: @themeColor;
+                li{
+                    width: 100px;
+                    padding: 0;
+                    line-height: 40px;
+                    a{
+                        text-align: center;
+                        line-height: 40px; 
+                        display: inline-block;
+                        width: 100%;
+                         color: #fff;
+                        &:hover{
+                            background-color:#25262a ;
+                        }
+                    }
+                }
+            }
+         }
+         .on{
+            &>a{
+                color: @themeColor;  
+            }
+        }
+     }
+ }
+    
+ //上下结构
+    .top-bottom(){
+        .top{
+            
+        }
+        .bottom{
+            
+        }
+    }
+    
+    .top-bottom-img(){
+        .top{
+            .img-wrap{
+                img{
+                    
+                }
+            }
+        }
+    }
+   
+   /**
+        public varible
+    */
+   
+   @wrapWidth : 1200px;
+   @themeColor:#dd2736;
+   @themeColorLighten:lighten(@themeColor,10%);
+   
+    

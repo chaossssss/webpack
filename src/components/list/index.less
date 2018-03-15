@@ -1,0 +1,30 @@
+@import '../../common/less/util.less';
+.default-list{
+    background-color: #fff;
+    .h-list-col(33.27%,0,3);
+    width: 1280px;
+    margin: 0px auto;
+    li{
+        margin: 0;
+        padding: 46px 0 0 ;
+        border-bottom: 1px solid #F1F1F1;
+        border-right: 1px solid #F1F1F1;
+        height: 430px;
+        &:nth-of-type(3n){
+            border-right: 0;
+        }
+        h4,small{
+            text-align: center;
+        }
+        h4{
+            font-size: 20px;
+        }
+        small{
+            display: block;
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 36px;
+            margin-top: 8px;
+        }
+    }
+}
